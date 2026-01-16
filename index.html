@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vashno Agro Services</title>
+
+  <!-- ✅ TAB ICON -->
+  <link rel="icon" type="image/png" href="vaishno.png">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+    body{background:#f7f7f7;color:#222;}
+
+    header{
+      background:linear-gradient(to right,#1b5e20,#43a047);
+      color:white;
+      padding:16px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      position:sticky;
+      top:0;
+      z-index:99;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid #fff;
+      box-shadow:0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    header h1{font-size:22px;line-height:1.2;}
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:15px;
+      font-weight:600;
+    }
+    nav a:hover{opacity:0.85;}
+
+    .hero{
+      height:88vh;
+      background:url("vaishno.png") center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      padding:0 10%;
+      color:white;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.55);
+    }
+    .hero-content{
+      position:relative;
+      max-width:680px;
+      z-index:2;
+      background:rgba(0,0,0,0.35);
+      padding:22px;
+      border-radius:16px;
+      backdrop-filter: blur(3px);
+    }
+    .hero-content h2{font-size:38px;margin-bottom:12px;}
+    .hero-content p{font-size:17px;margin-bottom:18px;line-height:1.6;}
+
+    .btn{
+      display:inline-block;
+      background:#ffeb3b;
+      color:#222;
+      padding:12px 20px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      margin-right:10px;
+    }
+    .btn:hover{background:#fdd835;}
+
+    .btn2{
+      display:inline-block;
+      background:#ffffff;
+      color:#1b5e20;
+      padding:12px 20px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      border:2px solid #ffffff;
+    }
+    .btn2:hover{opacity:0.9;}
+
+    section{
+      padding:60px 10%;
+      background:white;
+    }
+    section:nth-child(even){
+      background:#f1f8e9;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:35px;
+    }
+    .section-title h3{
+      font-size:30px;
+      color:#1b5e20;
+    }
+    .section-title p{
+      color:#555;
+      margin-top:8px;
+      line-height:1.5;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      padding:25px;
+      border-radius:14px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+    .card:hover{transform:translateY(-6px);}
+    .card h4{margin-bottom:10px;color:#2e7d32;}
+    .card p{color:#444;line-height:1.6;}
+
+    /* ✅ Products list */
+    .product-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:10px;
+    }
+    .product{
+      background:#fff;
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      border-left:6px solid #43a047;
+    }
+    .product h4{
+      color:#1b5e20;
+      margin-bottom:8px;
+      font-size:18px;
+    }
+    .product p{
+      color:#444;
+      line-height:1.5;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+    .price{
+      font-weight:bold;
+      color:#2e7d32;
+      font-size:15px;
+    }
+    .order-btn{
+      display:inline-block;
+      margin-top:10px;
+      background:#25D366;
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:14px;
+    }
+    .order-btn:hover{opacity:0.9;}
+
+    /* ✅ Timing */
+    .timing{
+      max-width:750px;
+      margin:0 auto;
+      background:white;
+      padding:22px;
+      border-radius:14px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.12);
+    }
+    .timing ul{
+      margin-top:12px;
+      padding-left:18px;
+      color:#333;
+      line-height:1.9;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      margin-top:25px;
+    }
+    .contact-box{
+      background:white;
+      padding:25px;
+      border-radius:14px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.12);
+    }
+    .info p{margin:10px 0;color:#333;line-height:1.6;}
+    .info b{color:#1b5e20;}
+
+    form input, form textarea{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+      border:1px solid #ccc;
+      border-radius:10px;
+      outline:none;
+    }
+    form button{
+      width:100%;
+      padding:12px;
+      background:#2e7d32;
+      border:none;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      border-radius:10px;
+      cursor:pointer;
+    }
+    form button:hover{background:#1b5e20;}
+
+    iframe{
+      width:100%;
+      height:250px;
+      border:0;
+      border-radius:14px;
+      margin-top:15px;
+    }
+
+    footer{
+      background:#1b5e20;
+      color:white;
+      text-align:center;
+      padding:18px;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      background:#25D366;
+      color:white;
+      padding:14px 16px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 4px 12px rgba(0,0,0,0.25);
+      z-index:999;
+    }
+    .whatsapp:hover{opacity:0.9;}
+
+    @media(max-width:800px){
+      .hero-content h2{font-size:28px;}
+      header{padding:14px 6%;}
+      section{padding:45px 6%;}
+      .contact-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <img src="vaishno.png" alt="Vaishno Devi">
+      <h1>Vashno Agro Services</h1>
+    </div>
+
+    <nav>
+      <a href="#about">हमारे बारे में</a>
+      <a href="#services">सेवाएं</a>
+      <a href="#products">प्रोडक्ट</a>
+      <a href="#timing">टाइमिंग</a>
+      <a href="#reviews">रिव्यू</a>
+      <a href="#contact">संपर्क</a>
+
+      <!-- ✅ Header Call Button -->
+      <a href="tel:+919782841188" style="
+        background:#ffeb3b;
+        color:#222;
+        padding:8px 12px;
+        border-radius:10px;
+        font-weight:bold;
+        margin-left:10px;
+        display:inline-block;
+      ">
+        📞 कॉल करें
+      </a>
+
+      <!-- ✅ Header WhatsApp Button -->
+      <a href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Vashno%20Agro%20Services%20se%20jankari%20chahiye%20."
+        target="_blank" style="
+        background:#25D366;
+        color:white;
+        padding:8px 12px;
+        border-radius:10px;
+        font-weight:bold;
+        margin-left:8px;
+        display:inline-block;
+      ">
+        💬 WhatsApp
+      </a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-content">
+      <h2>🙏 जय माता दी | Vashno Agro Services</h2>
+      <p>
+        Chittorgarh (Nhimeda Mode) में किसानों के लिए भरोसेमंद Agro Services।  
+        खेती संबंधित सभी समाधान एक ही जगह ✅
+      </p>
+      <a class="btn" href="#products">प्रोडक्ट देखें</a>
+      <a class="btn2" href="tel:+919782841188">📞 कॉल करें</a>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-title">
+      <h3>हमारे बारे में</h3>
+      <p>हमारी कोशिश है किसान भाई को सही सामान और सही सलाह समय पर मिले।</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h4>🌱 कृषि समाधान</h4>
+        <p>खेती से जुड़ी हर जरूरत के लिए भरोसेमंद समाधान।</p>
+      </div>
+      <div class="card">
+        <h4>🚜 कृषि उपकरण</h4>
+        <p>कल्टीवेटर, ट्रॉली, रोटावेटर, डिस्क हैरो और अन्य उपकरण उपलब्ध।</p>
+      </div>
+      <div class="card">
+        <h4>🧑‍🌾 किसान मार्गदर्शन</h4>
+        <p>फसल, मिट्टी और सही मशीन चयन के लिए सहायता।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-title">
+      <h3>हमारी सेवाएं</h3>
+      <p>आपकी खेती को बेहतर बनाने के लिए हमारी सेवाएं</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h4>⚙️ मशीन / उपकरण बिक्री</h4>
+        <p>कृषि उपकरण और मशीनें उचित रेट में उपलब्ध।</p>
+      </div>
+      <div class="card">
+        <h4>🛠️ सर्विस और सलाह</h4>
+        <p>उपकरण चयन और उपयोग की सही जानकारी।</p>
+      </div>
+      <div class="card">
+        <h4>📦 सप्लाई</h4>
+        <p>एरिया के अनुसार सप्लाई सुविधा (जरूरत अनुसार)।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Products -->
+  <section id="products">
+    <div class="section-title">
+      <h3>हमारे प्रोडक्ट</h3>
+      <p>नीचे हमारे मुख्य कृषि उपकरण और मशीनें दिए गए हैं ✅</p>
+    </div>
+
+    <div class="product-list">
+
+      <div class="product">
+        <h4>🚿 स्प्रे पंप</h4>
+        <p>दवाई/पानी स्प्रे करने के लिए मजबूत और टिकाऊ स्प्रे पंप उपलब्ध।</p>
+        <div class="price">Price: ₹ 950 से शुरू</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Spray%20Pump%20chahiye%20.%20Model%20and%20Price%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>⚙️ थ्रेसर (Thresher)</h4>
+        <p>किसानों के लिए मजबूत और भरोसेमंद Thresher उपलब्ध।</p>
+        <div class="price">Price: ₹ 1,50,000 से ₹ 3,20,000 तक</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Thresher%20chahiye%20.%20Model%20and%20Price%20details%20bheje%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>🚜 कल्टीवेटर (Cultivator)</h4>
+        <p>मजबूत और टिकाऊ Cultivator उपलब्ध (विभिन्न मॉडल)।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Cultivator%20chahiye%20.%20Details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>🟢 मिनी कल्टीवेटर (Mini Cultivator)</h4>
+        <p>छोटे खेतों और हल्के काम के लिए Mini Cultivator उपलब्ध।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Mini%20Cultivator%20chahiye%20.%20Details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>🔄 रोटावेटर (Rotavator)</h4>
+        <p>जमीन की जुताई और मिट्टी को भुरभुरा करने के लिए Rotavator उपलब्ध।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Rotavator%20chahiye%20.%20Details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>⭕ डिस्क हैरो (Disc Harrow)</h4>
+        <p>जमीन की गहरी जुताई और खेत तैयार करने के लिए Disc Harrow उपलब्ध।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Disc%20Harrow%20chahiye%20.%20Details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>🛞 ट्रॉली (Trolley)</h4>
+        <p>खेती के काम के लिए मजबूत ट्रॉली उपलब्ध।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Trolley%20chahiye%20.%20Model%20and%20Price%20details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>🌿 ग्रास कल्टीवेटर (Grass Cultivator)</h4>
+        <p>घास/निराई के लिए Grass Cultivator उपलब्ध।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20Grass%20Cultivator%20chahiye%20.%20Details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+      <div class="product">
+        <h4>⚒️ HAL</h4>
+        <p>कृषि कार्य के लिए HAL उपलब्ध (मॉडल/साइज के अनुसार)।</p>
+        <div class="price">Price: स्टोर विजिट पर</div>
+
+        <a class="order-btn" target="_blank"
+          href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Mujhe%20HAL%20chahiye%20.%20Details%20bataye%20.">
+          💬 WhatsApp
+        </a>
+
+        <a class="order-btn" style="background:#1b5e20;" href="tel:+919782841188">
+          📞 Call Now
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✅ Shop Timing -->
+  <section id="timing">
+    <div class="section-title">
+      <h3>दुकान की टाइमिंग</h3>
+      <p>हमारी उपलब्धता (आप चाहो तो time बदल सकते हो ✅)</p>
+    </div>
+
+    <div class="timing">
+      <h4 style="color:#1b5e20;">🕒 Vashno Agro Services Timing</h4>
+      <ul>
+        <li>सोमवार - शनिवार: <b>सुबह 9:00 AM से शाम 7:30 PM</b></li>
+        <li>रविवार: <b>सुबह 9:00 AM से दोपहर 2:00 PM</b></li>
+        <li>Emergency / Urgent: <b>WhatsApp पर मैसेज करें ✅</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ✅ Customer Reviews -->
+  <section id="reviews">
+    <div class="section-title">
+      <h3>ग्राहक रिव्यू</h3>
+      <p>हमारे ग्राहकों का भरोसा ही हमारी पहचान है ✅</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h4>⭐⭐⭐⭐⭐</h4>
+        <p>
+          “बहुत अच्छा सर्विस और सही रेट में सामान मिल जाता है।  
+          स्टाफ भी अच्छा है।”
+        </p>
+        <p style="margin-top:10px; color:#1b5e20; font-weight:bold;">- किसान भाई</p>
+      </div>
+
+      <div class="card">
+        <h4>⭐⭐⭐⭐⭐</h4>
+        <p>
+          “Thresher और खेती के उपकरण की जानकारी सही देते हैं।  
+          भरोसेमंद दुकान है।”
+        </p>
+        <p style="margin-top:10px; color:#1b5e20; font-weight:bold;">- ग्राहक</p>
+      </div>
+
+      <div class="card">
+        <h4>⭐⭐⭐⭐⭐</h4>
+        <p>
+          “Spray Pump quality बहुत अच्छी मिली और time पर delivery भी हो गई।  
+          जय माता दी 🙏”
+        </p>
+        <p style="margin-top:10px; color:#1b5e20; font-weight:bold;">- लोकल कस्टमर</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:25px;">
+      <a href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Main%20Vashno%20Agro%20Services%20ka%20feedback%20dena%20chahta%20hu%20:%20"
+        target="_blank"
+        style="
+          display:inline-block;
+          background:#25D366;
+          color:white;
+          padding:12px 18px;
+          border-radius:12px;
+          font-weight:bold;
+          text-decoration:none;
+          box-shadow:0 4px 12px rgba(0,0,0,0.18);
+        ">
+        💬 WhatsApp पर Feedback दें
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-title">
+      <h3>संपर्क करें</h3>
+      <p>किसी भी जानकारी के लिए हमें कॉल या WhatsApp करें</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-box info">
+        <h4 style="color:#1b5e20;margin-bottom:10px;">📍 हमारी जानकारी</h4>
+        <p><b>नाम:</b> Vashno Agro Services</p>
+        <p><b>मोबाइल:</b> 9782841188</p>
+        <p><b>पता:</b> Chittorgarh, Nhimeda Mode</p>
+
+        <iframe 
+          src="https://www.google.com/maps?q=Chittorgarh%20Nhimeda%20Mode&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="contact-box">
+        <h4 style="color:#1b5e20;margin-bottom:10px;">📝 मैसेज भेजें</h4>
+        <form>
+          <input type="text" placeholder="आपका नाम" required>
+          <input type="tel" placeholder="मोबाइल नंबर" required>
+          <textarea rows="4" placeholder="आपका मैसेज" required></textarea>
+          <button type="submit">भेजें</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Vashno Agro Services | All Rights Reserved</p>
+    <p style="margin-top:6px;">👤 Owner: <b>Nandkishor Yadav</b></p>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/919782841188?text=Jai%20Mata%20Di%20!%20Vashno%20Agro%20Services%20se%20jankari%20chahiye%20." target="_blank">
+    💬 WhatsApp
+  </a>
+
+</body>
+</html>
